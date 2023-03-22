@@ -12,4 +12,10 @@ function getComputerChoice() {
     }
 }
 
+// function playerSelection()
+// Takes user input
+
+// function playRound(playerSelection(), getComputerChoice())
+// simulate a game of Rock Paper Scissors while taking 2 parameters
+
 getComputerChoice();
