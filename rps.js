@@ -31,34 +31,74 @@ function playRound(playerChoice, computerChoice) {
 
     if (ps == cs) {
         console.log("Draw");
+        return 0;
     }
     else if (ps == "ROCK") {
         if (cs == "PAPER") {
             console.log("You Lose!  Paper beats Rock!");
+            return -1;
         }
         else if (cs == "SCISSOR") {
             console.log("You Win!  Rock beats Scissor!");
+            return 1;
         }
     }
     else if (ps == "PAPER") {
         if (cs == "SCISSOR") {
             console.log("You Lose!  Scissor beats Paper!");
+            return -1;
         }
         else if (cs == "ROCK") {
             console.log("You Win!  Paper beats Rock!");
+            return 1;
         }
     }
     else if (ps == "SCISSOR") {
         if (cs == "ROCK") {
             console.log("You Lose!  Rock beats Scissor!");
+            return -1;
         }
         else if (cs == "PAPER") {
             console.log("You Win!  Scissor beats Paper!");
+            return 1;
         }
     }
+}
+
+function game() {
+    let wcounter = 0;
+    let lcounter = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let decision = playRound(playerSelection(), getComputerChoice());
+        
+        if (wcounter == 3 || lcounter == 3) {
+            return;
+        }
+        
+        if (decision < 0) {
+            lcounter++;
+        }
+        else if (decision > 0) {
+            wcounter++;
+        }
+    }
+
+    console.log("The score is Player: " + wcounter + " Computer: " + lcounter);
+
+    if (wcounter > lcounter) {
+        console.log("You win!");
+    }
+    else if (wcounter < lcounter) {
+        console.log("You lose!");
+    }
+    else {
+        console.log("It is a draw!");
+    }
+
 }
 
 
 //getComputerChoice();
 //playerSelection();
-playRound(playerSelection(), getComputerChoice());
+game();
