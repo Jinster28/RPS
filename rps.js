@@ -72,10 +72,6 @@ function game() {
     for (let i = 0; i < 5; i++) {
         let decision = playRound(playerSelection(), getComputerChoice());
         
-        if (wcounter == 3 || lcounter == 3) {
-            return;
-        }
-        
         if (decision < 0) {
             lcounter++;
         }
@@ -98,7 +94,4 @@ function game() {
 
 }
 
-
-//getComputerChoice();
-//playerSelection();
 game();
