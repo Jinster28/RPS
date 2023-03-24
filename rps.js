@@ -17,6 +17,11 @@ function playerSelection() {
     
     let userInput = prompt("What is your move?  Please enter one of Rock, Paper, or Scissor").toUpperCase();       
      
+    while (userInput != "ROCK" && userInput != "SCISSOR" && userInput != "PAPER") {
+        userInput = prompt("Invalid choice.  Please enter one of Rock, Paper, or Scissor").toUpperCase();
+        console.log(userInput);
+    }
+
     console.log(userInput);
 
     return userInput;
@@ -27,4 +32,4 @@ function playerSelection() {
 // simulate a game of Rock Paper Scissors while taking 2 parameters
 
 //getComputerChoice();
-playerSelection();
+//playerSelection();
