@@ -1,3 +1,9 @@
+// Global variable declarations
+let pScore = 0;  // Keep Player Score
+let cScore = 0;  // Keep Computer Score
+
+
+// Custom Functions
 function getComputerChoice() {
     let randNum = Math.floor(Math.random() * 3);
 
@@ -56,21 +62,38 @@ function playRound(playerChoice, computerChoice) {
     }
     else if (ps == "SCISSOR") {
         if (cs == "ROCK") {
-            console.log("You Lose!  Rock beats Scissor!");
+            gameText.innerHTML = "You Lose!  Rock beats Scissor!";
             return -1;
         }
         else if (cs == "PAPER") {
-            console.log("You Win!  Scissor beats Paper!");
+            gameText.innerHTML = "You Win!  Scissor beats Paper!";
             return 1;
         }
     }
 }
 
+// Function to keep track of scores
+function tallyScore(value) {
+  
+    if (value == 1) {
+        pScore = pScore + 1;
+    } 
+    else if (value == -1) {
+        cScore = cScore + 1;
+    }
+    return {pScore, cScore};
+}
+
+
+// Main
 document.addEventListener('click', function(e) {
     if (e.target.innerHTML == "Rock" || e.target.innerHTML == "Paper" || e.target.innerHTML == "Scissor") {
-        playRound(e.target.innerHTML, getComputerChoice());
+        let counter = playRound(e.target.innerHTML, getComputerChoice());
+        console.log(tallyScore(counter));
     }
 });
+
+
 
 
 // function game(num) {
