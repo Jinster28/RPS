@@ -28,28 +28,29 @@ function playerSelection() {
 function playRound(playerChoice, computerChoice) {
     let ps = playerChoice.toUpperCase();
     let cs = computerChoice.toUpperCase();
+    let gameText = document.querySelector('.outcome');
 
     if (ps == cs) {
-        console.log("Draw");
+        gameText.innerHTML = "Draw";
         return 0;
     }
     else if (ps == "ROCK") {
         if (cs == "PAPER") {
-            console.log("You Lose!  Paper beats Rock!");
+            gameText.innerHTML = "You Lose!  Paper beats Rock!";
             return -1;
         }
         else if (cs == "SCISSOR") {
-            console.log("You Win!  Rock beats Scissor!");
+            gameText.innerHTML = "You Win!  Rock beats Scissor!";
             return 1;
         }
     }
     else if (ps == "PAPER") {
         if (cs == "SCISSOR") {
-            console.log("You Lose!  Scissor beats Paper!");
+            gameText.innerHTML = "You Lose!  Scissor beats Paper!";
             return -1;
         }
         else if (cs == "ROCK") {
-            console.log("You Win!  Paper beats Rock!");
+            gameText.innerHTML = "You Win!  Paper beats Rock!";
             return 1;
         }
     }
@@ -65,33 +66,40 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-function game(num) {
-    let wcounter = 0;
-    let lcounter = 0;
+document.addEventListener('click', function(e) {
+    if (e.target.innerHTML == "Rock" || e.target.innerHTML == "Paper" || e.target.innerHTML == "Scissor") {
+        playRound(e.target.innerHTML, getComputerChoice());
+    }
+});
 
-    for (let i = 0; i < num; i++) {
-        let decision = playRound(playerSelection(), getComputerChoice());
+
+// function game(num) {
+//     let wcounter = 0;
+//     let lcounter = 0;
+
+//     for (let i = 0; i < num; i++) {
+//         let decision = playRound(playerSelection(), getComputerChoice());
         
-        if (decision < 0) {
-            lcounter++;
-        }
-        else if (decision > 0) {
-            wcounter++;
-        }
-    }
+//         if (decision < 0) {
+//             lcounter++;
+//         }
+//         else if (decision > 0) {
+//             wcounter++;
+//         }
+//     }
 
-    console.log("The score is Player: " + wcounter + " Computer: " + lcounter);
+//     console.log("The score is Player: " + wcounter + " Computer: " + lcounter);
 
-    if (wcounter > lcounter) {
-        console.log("You win!");
-    }
-    else if (wcounter < lcounter) {
-        console.log("You lose!");
-    }
-    else {
-        console.log("It is a draw!");
-    }
+//     if (wcounter > lcounter) {
+//         console.log("You win!");
+//     }
+//     else if (wcounter < lcounter) {
+//         console.log("You lose!");
+//     }
+//     else {
+//         console.log("It is a draw!");
+//     }
 
-}
+// }
 
-game(5);
+//game(5);
