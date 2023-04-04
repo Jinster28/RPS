@@ -65,11 +65,11 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-function game() {
+function game(num) {
     let wcounter = 0;
     let lcounter = 0;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < num; i++) {
         let decision = playRound(playerSelection(), getComputerChoice());
         
         if (decision < 0) {
@@ -94,4 +94,4 @@ function game() {
 
 }
 
-game();
+game(5);
