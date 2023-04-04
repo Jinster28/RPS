@@ -94,7 +94,7 @@ document.addEventListener('click', function(e) {
 });
 
 
-
+// Obsolete Code - Keep temporarily
 
 // function game(num) {
 //     let wcounter = 0;
