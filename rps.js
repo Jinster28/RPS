@@ -81,16 +81,69 @@ function tallyScore(value) {
     else if (value == -1) {
         cScore = cScore + 1;
     }
-    return {pScore, cScore};
+
+    document.querySelector('#uScore').innerHTML = pScore;
+    document.querySelector('#cScore').innerHTML = cScore;
+}
+
+// Function to declare a winner when someone reaches 5 wins
+function declareWin() {
+    let winDeclare = document.querySelector('.gameStatus');
+
+    if (pScore == 5) {
+        winDeclare.innerHTML = `User Wins! Final Score: User ${pScore} Computer Score ${cScore}`;
+        endGame();
+    }
+    else if (cScore == 5) {
+        winDeclare.innerHTML = `Computer Wins! Final Score: User ${pScore} Computer Score ${cScore}`;
+        endGame();
+    }
+    else {
+        winDeclare.innerHTML = 'Who will win?  Go User!  I am rooting for you!';
+    }
+}
+
+// Function to end game
+function endGame() {
+    let gameButton = document.querySelectorAll('.btn');
+
+    for (i = 0; i < gameButton.length; i++) {
+        console.log(i);
+        gameButton[i].disabled = true;
+    }
+}
+
+// Function to reset game
+function gameReset() {
+    
+    let gameButton = document.querySelectorAll('.btn');
+    pScore = 0;
+    cScore = 0;
+    document.querySelector('.outcome').innerHTML = "";
+    document.querySelector('.gameStatus').innerHTML = "Ready for a round?";
+    document.querySelector('#uScore').innerHTML = pScore;
+    document.querySelector('#cScore').innerHTML = cScore;
+
+    for (i = 0; i < gameButton.length; i++) {
+        console.log(i);
+        gameButton[i].disabled = false;
+    }
 }
 
 
 // Main
+
+gameReset();
+
 document.addEventListener('click', function(e) {
     if (e.target.innerHTML == "Rock" || e.target.innerHTML == "Paper" || e.target.innerHTML == "Scissor") {
         let counter = playRound(e.target.innerHTML, getComputerChoice());
-        console.log(tallyScore(counter));
+        tallyScore(counter);
+        declareWin();
     }
+    else if (e.target.innerHTML == "Reset") {
+        gameReset();
+    } 
 });
 
 
