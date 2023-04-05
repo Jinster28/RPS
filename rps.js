@@ -108,7 +108,6 @@ function endGame() {
     let gameButton = document.querySelectorAll('.btn');
 
     for (i = 0; i < gameButton.length; i++) {
-        console.log(i);
         gameButton[i].disabled = true;
     }
 }
@@ -125,14 +124,12 @@ function gameReset() {
     document.querySelector('#cScore').innerHTML = cScore;
 
     for (i = 0; i < gameButton.length; i++) {
-        console.log(i);
         gameButton[i].disabled = false;
     }
 }
 
 
 // Main
-
 gameReset();
 
 document.addEventListener('click', function(e) {
@@ -145,37 +142,3 @@ document.addEventListener('click', function(e) {
         gameReset();
     } 
 });
-
-
-// Obsolete Code - Keep temporarily
-
-// function game(num) {
-//     let wcounter = 0;
-//     let lcounter = 0;
-
-//     for (let i = 0; i < num; i++) {
-//         let decision = playRound(playerSelection(), getComputerChoice());
-        
-//         if (decision < 0) {
-//             lcounter++;
-//         }
-//         else if (decision > 0) {
-//             wcounter++;
-//         }
-//     }
-
-//     console.log("The score is Player: " + wcounter + " Computer: " + lcounter);
-
-//     if (wcounter > lcounter) {
-//         console.log("You win!");
-//     }
-//     else if (wcounter < lcounter) {
-//         console.log("You lose!");
-//     }
-//     else {
-//         console.log("It is a draw!");
-//     }
-
-// }
-
-//game(5);
